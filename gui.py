@@ -141,3 +141,8 @@ class MemoryGameGUI:
         for index in range(len(self.buttons)):
             self.update_card_button(index)
 
+    def close_wrong_pair(self):
+        self.game.close_unmatched_cards()
+        self.update_all_buttons()
+
+    
