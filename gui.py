@@ -90,3 +90,21 @@ class MemoryGameGUI:
             button = tk.Button(self.cards_frame, text="?", font=("Arial", 20, "bold"), width=4, height=2, bg="#f5a623", command=lambda i=index: self.card_click(i))
             button.grid(row=row, column=col, padx=5, pady=5)
             self.buttons.append(button)
+
+    def card_click(self, index):
+        if self.is_paused:
+            return
+        opened = self.game.open_card(index)
+        if not opened:
+            return
+        self.update_card_button(index)
+        if len(self.game.opened_cards) == 2:
+            result = self.game.check_pair()
+            self.update_score()
+            if result is True:
+                self.update_all_buttons()
+                if self.game.is_game_finished:
+                    self.finish_game()
+            elif result is False:
+                self.root.after(800, self.close_wrong_pair)
+
