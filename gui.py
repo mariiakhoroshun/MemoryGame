@@ -180,3 +180,14 @@ class MemoryGameGUI:
         self.timer_running = False
         self.is_paused = False
         self.show_menu()
+
+    def show_background_menu(self):
+        bg_window = tk.Toplevel(self.root)
+        bg_window.title("Зміна фону")
+        bg_window.geometry("300x250")
+        label = tk.Label(bg_window, text="Оберіть колір фону:", font=("Arial", 14))
+        label.pack(pady=15)
+        colors = [("Блакитний", "#dceefb"), ("Рожевий", "#ffe0f0"), ("Зелений", "#e0ffe0"), ("Жовтий", "#fff5cc"), ("Сірий", "#eeeeee")]
+        for color_name, color_code in colors:
+            button = tk.Button(bg_window, text=color_name, font=("Arial", 12), width=20, command=lambda c=color_code, w=bg_window: self.set_game_background(c, w))
+            button.pack(pady=5)
