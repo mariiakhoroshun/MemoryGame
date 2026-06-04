@@ -55,4 +55,30 @@ class MemoryGameGUI:
             except tk.TclError:
                 pass
 
-    
+    def start_game(self, rows, cols):
+        self.game = MemoryGame(rows, cols)
+        self.buttons = []
+        self.seconds = 0
+        self.timer_running = True
+        self.is_paused = False
+        self.show_game_screen()
+        self.update_timer()
+
+    def show_game_screen(self):
+        self.clear_window()
+        top_panel = tk.Frame(self.main_frame, bg=self.bg_color)
+        top_panel.pack(pady=10)
+        self.timer_label = tk.Label(top_panel, text="Час: 0 с", font=("Arial", 14), bg=self.bg_color)
+        self.timer_label.grid(row=0, column=0, padx=10)
+        self.score_label = tk.Label(top_panel, text="Відкрито пар: 0 | Залишилось: 0 | Ходів: 0", font=("Arial", 14), bg=self.bg_color)
+        self.score_label.grid(row=0, column=1, padx=10)
+        self.pause_button = tk.Button(top_panel, text="Пауза", font=("Arial", 12), command=self.toggle_pause)
+        self.pause_button.grid(row=0, column=2, padx=10)
+        menu_button = tk.Button(top_panel, text="Меню", font=("Arial", 12), command=self.back_to_menu)
+        menu_button.grid(row=0, column=3, padx=10)
+        bg_button = tk.Button(top_panel, text="Змінити фон", font=("Arial", 12), command=self.show_background_menu)
+        bg_button.grid(row=0, column=4, padx=10)
+        self.cards_frame = tk.Frame(self.main_frame, bg=self.bg_color)
+        self.cards_frame.pack(pady=20)
+        self.create_card_buttons()
+        self.update_score()
