@@ -137,3 +137,7 @@ class MemoryGameGUI:
         else:
             button.config(image="", text="?", width=4, height=2, bg="#f5a623", state="normal")
 
+    def update_all_buttons(self):
+        for index in range(len(self.buttons)):
+            self.update_card_button(index)
+
