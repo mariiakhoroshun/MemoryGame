@@ -55,4 +55,11 @@ class MemoryGameGUI:
             except tk.TclError:
                 pass
 
-    
+    def start_game(self, rows, cols):
+        self.game = MemoryGame(rows, cols)
+        self.buttons = []
+        self.seconds = 0
+        self.timer_running = True
+        self.is_paused = False
+        self.show_game_screen()
+        self.update_timer()
