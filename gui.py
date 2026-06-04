@@ -82,3 +82,11 @@ class MemoryGameGUI:
         self.cards_frame.pack(pady=20)
         self.create_card_buttons()
         self.update_score()
+
+    def create_card_buttons(self):
+        for index, card in enumerate(self.game.cards):
+            row = index // self.game.cols
+            col = index % self.game.cols
+            button = tk.Button(self.cards_frame, text="?", font=("Arial", 20, "bold"), width=4, height=2, bg="#f5a623", command=lambda i=index: self.card_click(i))
+            button.grid(row=row, column=col, padx=5, pady=5)
+            self.buttons.append(button)
