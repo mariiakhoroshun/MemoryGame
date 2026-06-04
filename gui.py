@@ -176,3 +176,7 @@ class MemoryGameGUI:
         self.timer_running = False
         messagebox.showinfo("Перемога!", f"Вітаю! Ви відкрили всі пари.\nВаш час: {self.seconds - 1} с\nКількість ходів: {self.game.get_moves_count()}")
 
+    def back_to_menu(self):
+        self.timer_running = False
+        self.is_paused = False
+        self.show_menu()
