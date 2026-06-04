@@ -172,3 +172,7 @@ class MemoryGameGUI:
             self.update_all_buttons()
             self.update_timer()
 
+    def finish_game(self):
+        self.timer_running = False
+        messagebox.showinfo("Перемога!", f"Вітаю! Ви відкрили всі пари.\nВаш час: {self.seconds - 1} с\nКількість ходів: {self.game.get_moves_count()}")
+
