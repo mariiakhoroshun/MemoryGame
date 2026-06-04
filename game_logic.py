@@ -46,3 +46,11 @@ class MemoryGame:
         if len(self.opened_cards) >= 2:
             return False
         return True
+
+    def open_card(self, index):
+        if self.can_open_card(index):
+            card = self.cards[index]
+            card.open_card()
+            self.opened_cards.append(index)
+            return True
+        return False
