@@ -145,4 +145,9 @@ class MemoryGameGUI:
         self.game.close_unmatched_cards()
         self.update_all_buttons()
 
-    
+    def update_score(self):
+        opened = self.game.get_opened_pairs_count()
+        closed = self.game.get_closed_pairs_count()
+        moves = self.game.get_moves_count()
+        self.score_label.config(text=f"Відкрито пар: {opened} | Залишилось: {closed} | Ходів: {moves}")
+
