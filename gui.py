@@ -191,3 +191,14 @@ class MemoryGameGUI:
         for color_name, color_code in colors:
             button = tk.Button(bg_window, text=color_name, font=("Arial", 12), width=20, command=lambda c=color_code, w=bg_window: self.set_game_background(c, w))
             button.pack(pady=5)
+
+    def set_game_background(self, color, window):
+        self.bg_color = color
+        self.main_frame.config(bg=self.bg_color)
+        self.cards_frame.config(bg=self.bg_color)
+        for widget in self.main_frame.winfo_children():
+            try:
+                widget.config(bg=self.bg_color)
+            except tk.TclError:
+                pass
+        window.destroy()
