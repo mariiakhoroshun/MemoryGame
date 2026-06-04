@@ -176,3 +176,29 @@ class MemoryGameGUI:
         self.timer_running = False
         messagebox.showinfo("Перемога!", f"Вітаю! Ви відкрили всі пари.\nВаш час: {self.seconds - 1} с\nКількість ходів: {self.game.get_moves_count()}")
 
+    def back_to_menu(self):
+        self.timer_running = False
+        self.is_paused = False
+        self.show_menu()
+
+    def show_background_menu(self):
+        bg_window = tk.Toplevel(self.root)
+        bg_window.title("Зміна фону")
+        bg_window.geometry("300x250")
+        label = tk.Label(bg_window, text="Оберіть колір фону:", font=("Arial", 14))
+        label.pack(pady=15)
+        colors = [("Блакитний", "#dceefb"), ("Рожевий", "#ffe0f0"), ("Зелений", "#e0ffe0"), ("Жовтий", "#fff5cc"), ("Сірий", "#eeeeee")]
+        for color_name, color_code in colors:
+            button = tk.Button(bg_window, text=color_name, font=("Arial", 12), width=20, command=lambda c=color_code, w=bg_window: self.set_game_background(c, w))
+            button.pack(pady=5)
+
+    def set_game_background(self, color, window):
+        self.bg_color = color
+        self.main_frame.config(bg=self.bg_color)
+        self.cards_frame.config(bg=self.bg_color)
+        for widget in self.main_frame.winfo_children():
+            try:
+                widget.config(bg=self.bg_color)
+            except tk.TclError:
+                pass
+        window.destroy()
