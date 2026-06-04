@@ -13,3 +13,16 @@ class Card:
     def mark_as_matched(self):
         self.is_matched = True
         self.is_open = True
+
+class MemoryGame:
+    def __init__(self, rows, cols):
+        self.rows = rows
+        self.cols = cols
+        self.total_cards = rows * cols
+        self.total_pairs = self.total_cards // 2
+        self.cards = []
+        self.opened_cards = []
+        self.matched_pairs = 0
+        self.moves = 0
+        self.is_game_finished = False
+        self.create_cards()
