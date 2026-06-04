@@ -157,3 +157,18 @@ class MemoryGameGUI:
             self.seconds += 1
             self.root.after(1000, self.update_timer)
 
+    def toggle_pause(self):
+        if self.game is None:
+            return
+        self.is_paused = not self.is_paused
+        if self.is_paused:
+            self.timer_running = False
+            self.pause_button.config(text="Продовжити")
+            for button in self.buttons:
+                button.config(state="disabled")
+        else:
+            self.timer_running = True
+            self.pause_button.config(text="Пауза")
+            self.update_all_buttons()
+            self.update_timer()
+
