@@ -9,3 +9,7 @@ class Card:
     def open_card(self):
         if not self.is_matched:
             self.is_open = True
+
+    def mark_as_matched(self):
+        self.is_matched = True
+        self.is_open = True
