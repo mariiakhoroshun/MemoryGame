@@ -108,3 +108,32 @@ class MemoryGameGUI:
             elif result is False:
                 self.root.after(800, self.close_wrong_pair)
 
+    def update_card_button(self, index):
+        card = self.game.get_card(index)
+        button = self.buttons[index]
+
+        if card.is_open or card.is_matched:
+            img_path = card.value
+            if img_path not in self.loaded_images:
+                try:
+                    pil_img = Image.open(img_path).resize((80, 80))
+                    self.loaded_images[img_path] = ImageTk.PhotoImage(pil_img)
+                except Exception:
+                    self.loaded_images[img_path] = None
+
+            img = self.loaded_images[img_path]
+
+            if card.is_matched:
+                bg_color = "#7bed9f"
+                state = "disabled"
+            else:
+                bg_color = "#7ed6df"
+                state = "normal"
+
+            if img:
+                button.config(image=img, text="", width=100, height=100, bg=bg_color, state=state)
+            else:
+                button.config(image="", text="X", width=4, height=2, bg=bg_color, state=state)
+        else:
+            button.config(image="", text="?", width=4, height=2, bg="#f5a623", state="normal")
+
