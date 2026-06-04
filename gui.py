@@ -137,3 +137,23 @@ class MemoryGameGUI:
         else:
             button.config(image="", text="?", width=4, height=2, bg="#f5a623", state="normal")
 
+    def update_all_buttons(self):
+        for index in range(len(self.buttons)):
+            self.update_card_button(index)
+
+    def close_wrong_pair(self):
+        self.game.close_unmatched_cards()
+        self.update_all_buttons()
+
+    def update_score(self):
+        opened = self.game.get_opened_pairs_count()
+        closed = self.game.get_closed_pairs_count()
+        moves = self.game.get_moves_count()
+        self.score_label.config(text=f"Відкрито пар: {opened} | Залишилось: {closed} | Ходів: {moves}")
+
+    def update_timer(self):
+        if self.timer_running and not self.is_paused:
+            self.timer_label.config(text=f"Час: {self.seconds} с")
+            self.seconds += 1
+            self.root.after(1000, self.update_timer)
+
