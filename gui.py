@@ -18,3 +18,7 @@ class MemoryGameGUI:
         self.main_frame = tk.Frame(self.root, bg=self.bg_color)
         self.main_frame.pack(fill="both", expand=True)
         self.show_menu()
+
+    def clear_window(self):
+        for widget in self.main_frame.winfo_children():
+            widget.destroy()
