@@ -26,3 +26,10 @@ class MemoryGame:
         self.moves = 0
         self.is_game_finished = False
         self.create_cards()
+
+    def create_cards(self):
+        symbols = [f"{i}.jpg" for i in range(1, 19)]
+        needed_symbols = symbols[:self.total_pairs]
+        values = needed_symbols * 2
+        random.shuffle(values)
+        self.cards = [Card(value) for value in values]
