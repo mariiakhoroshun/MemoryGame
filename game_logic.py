@@ -84,3 +84,6 @@ class MemoryGame:
 
     def get_closed_pairs_count(self):
         return self.total_pairs - self.matched_pairs
+
+    def get_moves_count(self):
+        return self.moves
