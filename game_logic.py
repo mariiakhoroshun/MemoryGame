@@ -54,3 +54,22 @@ class MemoryGame:
             self.opened_cards.append(index)
             return True
         return False
+
+    def check_pair(self):
+        if len(self.opened_cards) != 2:
+            return None
+        self.moves += 1
+        first_index = self.opened_cards[0]
+        second_index = self.opened_cards[1]
+        first_card = self.cards[first_index]
+        second_card = self.cards[second_index]
+
+        if first_card.value == second_card.value:
+            first_card.mark_as_matched()
+            second_card.mark_as_matched()
+            self.matched_pairs += 1
+            self.opened_cards.clear()
+            if self.matched_pairs == self.total_pairs:
+                self.is_game_finished = True
+            return True
+        return False
