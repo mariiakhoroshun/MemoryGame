@@ -46,3 +46,13 @@ class MemoryGameGUI:
             button = tk.Button(colors_frame, text=color_name, font=("Arial", 12), command=lambda c=color_code: self.change_background(c))
             button.pack(side="left", padx=5)
 
+    def change_background(self, color):
+        self.bg_color = color
+        self.main_frame.config(bg=self.bg_color)
+        for widget in self.main_frame.winfo_children():
+            try:
+                widget.config(bg=self.bg_color)
+            except tk.TclError:
+                pass
+
+    
