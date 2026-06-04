@@ -28,7 +28,7 @@ class MemoryGame:
         self.create_cards()
 
     def create_cards(self):
-        symbols = [f"{i}.jpg" for i in range(1, 19)]
+        symbols = [f"{i}.png" for i in range(1, 19)]
         needed_symbols = symbols[:self.total_pairs]
         values = needed_symbols * 2
         random.shuffle(values)
@@ -36,4 +36,13 @@ class MemoryGame:
 
     def get_card(self, index):
         return self.cards[index]
-    
+
+    def can_open_card(self, index):
+        card = self.cards[index]
+        if card.is_open:
+            return False
+        if card.is_matched:
+            return False
+        if len(self.opened_cards) >= 2:
+            return False
+        return True
