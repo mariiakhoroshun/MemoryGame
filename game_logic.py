@@ -73,3 +73,8 @@ class MemoryGame:
                 self.is_game_finished = True
             return True
         return False
+
+    def close_unmatched_cards(self):
+        for index in self.opened_cards:
+            self.cards[index].close_card()
+        self.opened_cards.clear()
