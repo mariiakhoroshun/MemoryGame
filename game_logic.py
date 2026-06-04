@@ -78,3 +78,6 @@ class MemoryGame:
         for index in self.opened_cards:
             self.cards[index].close_card()
         self.opened_cards.clear()
+
+    def get_opened_pairs_count(self):
+        return self.matched_pairs
