@@ -151,3 +151,9 @@ class MemoryGameGUI:
         moves = self.game.get_moves_count()
         self.score_label.config(text=f"Відкрито пар: {opened} | Залишилось: {closed} | Ходів: {moves}")
 
+    def update_timer(self):
+        if self.timer_running and not self.is_paused:
+            self.timer_label.config(text=f"Час: {self.seconds} с")
+            self.seconds += 1
+            self.root.after(1000, self.update_timer)
+
