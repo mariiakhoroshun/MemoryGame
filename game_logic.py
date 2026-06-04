@@ -10,6 +10,10 @@ class Card:
         if not self.is_matched:
             self.is_open = True
 
+    def close_card(self):
+        if not self.is_matched:
+            self.is_open = False
+
     def mark_as_matched(self):
         self.is_matched = True
         self.is_open = True
