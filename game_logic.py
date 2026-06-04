@@ -33,3 +33,7 @@ class MemoryGame:
         values = needed_symbols * 2
         random.shuffle(values)
         self.cards = [Card(value) for value in values]
+
+    def get_card(self, index):
+        return self.cards[index]
+    
