@@ -196,6 +196,8 @@ class MemoryGameGUI:
         self.bg_color = color
         self.main_frame.config(bg=self.bg_color)
         self.cards_frame.config(bg=self.bg_color)
+        self.timer_label.config(bg=self.bg_color)
+        self.score_label.config(bg=self.bg_color)
         for widget in self.main_frame.winfo_children():
             try:
                 widget.config(bg=self.bg_color)
