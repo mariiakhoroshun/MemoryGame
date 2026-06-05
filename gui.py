@@ -7,7 +7,7 @@ class MemoryGameGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Гра тренування пам'яті")
-        self.root.geometry("750x650")
+        self.root.geometry("800x650")
         self.bg_color = "#dceefb"
         self.game = None
         self.buttons = []
@@ -184,7 +184,7 @@ class MemoryGameGUI:
     def show_background_menu(self):
         bg_window = tk.Toplevel(self.root)
         bg_window.title("Зміна фону")
-        bg_window.geometry("300x250")
+        bg_window.geometry("300x300")
         label = tk.Label(bg_window, text="Оберіть колір фону:", font=("Arial", 14))
         label.pack(pady=15)
         colors = [("Блакитний", "#dceefb"), ("Рожевий", "#ffe0f0"), ("Зелений", "#e0ffe0"), ("Жовтий", "#fff5cc"), ("Сірий", "#eeeeee")]
