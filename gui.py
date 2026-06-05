@@ -7,7 +7,7 @@ class MemoryGameGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Гра тренування пам'яті")
-        self.root.geometry("800x650")
+        self.root.geometry("830x650")
         self.bg_color = "#dceefb"
         self.game = None
         self.buttons = []
