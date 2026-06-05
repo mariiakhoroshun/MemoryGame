@@ -35,7 +35,7 @@ class MemoryGameGUI:
         easy_button.pack(pady=10)
         medium_button = tk.Button(self.main_frame, text="Середній рівень: 4 x 6", font=("Arial", 16), width=25, command=lambda: self.start_game(4, 6))
         medium_button.pack(pady=10)
-        hard_button = tk.Button(self.main_frame, text="Складний рівень: 6 x 6", font=("Arial", 16), width=25, command=lambda: self.start_game(6, 6))
+        hard_button = tk.Button(self.main_frame, text="Складний рівень: 5 x 6", font=("Arial", 16), width=25, command=lambda: self.start_game(5, 6))
         hard_button.pack(pady=10)
         bg_label = tk.Label(self.main_frame, text="Колір фону:", font=("Arial", 16), bg=self.bg_color)
         bg_label.pack(pady=20)
